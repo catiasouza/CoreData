@@ -16,6 +16,24 @@ class ViewController: UIViewController {
        
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
+        
+        //CRIANDO ENTIDADES
+        let usuario = NSEntityDescription.insertNewObject(forEntityName: "Usuario", into: context)
+        
+        //CONFIGURAR OBJETO USUARIO
+        usuario.setValue("Jennifer Souza", forKey: "nome")
+        usuario.setValue(02, forKey: "idade")
+        usuario.setValue("catiasouza", forKey: "login")
+        usuario.setValue("123", forKey: "senha")
+        
+        //SALVAR DADOS
+       
+        do {
+            try context.save()
+            print("Dados salvos com sucesso")
+        } catch  {
+            print("Erro ao salvar os dados")
+        }
     }
 
 
